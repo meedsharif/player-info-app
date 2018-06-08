@@ -1,0 +1,41 @@
+// Main Colors
+$color-primary: #3498db;
+$color-secondary: #777;
+$color-danger: #e74c3c;
+$color-warning: #F5C863;
+$color-success: #2ecc71;
+$color-info: #CEECF5; 
+
+$color-dark: #2c3e50;
+$color-light: #ecf0f1;
+
+$color-dark-1: #34495e;
+$color-dark-3: #1F1F29;
+
+$color-grey: #95a5a6;
+$color-grey-1: #cfd6d8;
+$color-grey-light: #ecf0f1;
+$color-grey-light-4: #ecf0f1;
+$color-grey-dark-1: #777;
+$color-grey-dark-2: #6d6a6a;
+
+// Border
+$border-bottom: 1px solid $color-dark;
+
+// Box shadow
+$box-shadow-default: 0 1rem 3rem rgba($color-dark, .3);
+$box-shadow-small: 0 .5rem 1rem rgba($color-dark, .3);
+
+// Width
+$max-width: 114rem;
+
+// Spacing 
+$gutter-vertical: 8rem; // Spacing top-bottom
+$gutter-vertical-small: 6rem; // Spacing top-bottom
+$gutter-horizontal: 6rem; // Spacing left-right
+
+// Font-sizes
+// $default-font-size: 1.6rem;
+
+// animation curves
+$default-anim: 0.175, 0.885, 0.32, 1.275;

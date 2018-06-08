@@ -1,0 +1,211 @@
+/* 
+
+  Breakpoint(Will be chnaged Later):
+  0 - 600px         Phone
+  601px - 900px     Tablet Portrait
+  901px - 1200px    Tablet Landscape
+  [1201px - 1800px] Normal Style
+  1800px+           Large Screen
+ 
+  $breakpoint argument options:
+  - phone
+  - tab-port
+  - tab-land
+  - big-desktop
+
+  1em = 16px;
+*/
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 200;
+  line-height: 1.6;
+  background-color: #232e38;
+  color: #777; }
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #777; }
+
+input,
+select {
+  padding: 1rem;
+  font-size: 2rem;
+  border: none;
+  border-bottom: 3px solid transparent; }
+  input:focus,
+  select:focus {
+    outline: none;
+    border-bottom: 3px solid #777; }
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto; }
+  @media only screen and (max-width: 56.25em) {
+    .container {
+      max-width: 50rem;
+      padding: 0 3rem; } }
+  @media only screen and (max-width: 75em) {
+    .container {
+      max-width: 100rem;
+      padding: 0 3rem; } }
+
+.heading-primary {
+  font-size: 3rem;
+  text-align: center;
+  color: #777;
+  font-weight: lighter; }
+
+.heading-secondary {
+  font-size: 2rem;
+  text-align: center;
+  color: #777;
+  font-weight: lighter; }
+
+.right {
+  float: right; }
+
+.margin-t-lg {
+  margin-top: 5rem; }
+
+.margin-t-md {
+  margin-top: 3rem; }
+
+.margin-t-sm {
+  margin-top: 1rem; }
+
+.margin-b-lg {
+  margin-bottom: 5rem; }
+
+.margin-b-md {
+  margin-bottom: 3rem; }
+
+.margin-b-sm {
+  margin-bottom: 1rem; }
+
+.margin-l-auto {
+  margin-left: auto; }
+
+.btn {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 3px;
+  color: #ecf0f1;
+  background-color: #ddd;
+  border: 1px solid transparent;
+  transition: all .2s ease-out;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 200;
+  display: inline;
+  cursor: pointer; }
+  .btn-primary {
+    background-color: #3498db; }
+    .btn-primary:hover {
+      border: 1px solid #3498db;
+      color: #3498db;
+      background-color: transparent; }
+  .btn-secondary {
+    background-color: #777; }
+    .btn-secondary:hover {
+      border: 1px solid #777;
+      color: #777;
+      background-color: transparent; }
+  .btn-danger {
+    background-color: #e74c3c; }
+    .btn-danger:hover {
+      border: 1px solid #e74c3c;
+      color: #e74c3c;
+      background-color: transparent; }
+  .btn-info {
+    background-color: #CEECF5;
+    color: #777; }
+    .btn-info:hover {
+      border: 1px solid #CEECF5;
+      color: #CEECF5;
+      background-color: transparent; }
+
+.header {
+  background-color: #283544;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
+
+.header__title {
+  color: #ecf0f1;
+  font-weight: lighter;
+  font-size: 3.5rem; }
+
+.card {
+  background-color: #283544;
+  color: #ecf0f1;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
+
+.form {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column; }
+
+.form-input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem; }
+
+.form-button {
+  display: flex;
+  /* justify-content: start; */ }
+
+.form-button > button:not(:last-child) {
+  margin-right: 1rem; }
+
+.input-group {
+  display: flex;
+  flex-direction: column; }
+  .input-group--name {
+    min-width: 50%; }
+
+.input-group > select {
+  border: none; }
+  .input-group > select > option {
+    border: none; }
+
+.input-group:not(:last-child) {
+  margin-right: 0rem; }
+
+.input-group > label {
+  font-size: 2rem;
+  margin-bottom: 1rem; }
+
+ul > li.list-item {
+  padding: 1rem;
+  display: block;
+  list-style: none;
+  font-size: 2rem;
+  transition: background-color .2s ease-out;
+  border-top: 1px solid #2c3e50;
+  border-left: 1px solid #2c3e50;
+  border-right: 1px solid #2c3e50; }
+
+ul > li.list-item::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+ul > li.list-item:last-child {
+  border-bottom: 1px solid #2c3e50; }
+
+ul > li.list-item:hover {
+  background-color: rgba(0, 0, 0, 0.01); }

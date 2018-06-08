@@ -1,0 +1,52 @@
+.btn {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 3px;
+  color: $color-grey-light-4;
+  background-color: #ddd;
+  border: 1px solid transparent;
+  transition: all .2s ease-out;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 200;
+  display: inline;
+  cursor: pointer;
+  // Color
+  &-primary {
+    background-color: $color-primary;
+    &:hover {
+      border: 1px solid $color-primary;
+      color: $color-primary;
+      background-color: transparent;
+    }
+  }
+
+  &-secondary {
+    background-color: $color-secondary;
+    &:hover {
+      border: 1px solid $color-secondary;
+      color: $color-secondary;
+      background-color: transparent;
+    }
+  }
+
+  &-danger {
+    background-color: $color-danger;
+    &:hover {
+      border: 1px solid $color-danger;
+      color: $color-danger;
+      background-color: transparent;
+    }
+  }
+
+  &-info {
+    background-color: $color-info;
+    color: $color-grey-dark-1;
+    &:hover {
+      border: 1px solid $color-info;
+      color: $color-info;
+      background-color: transparent;
+    }
+  }
+
+
+}
