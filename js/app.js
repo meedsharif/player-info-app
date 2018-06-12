@@ -1,14 +1,89 @@
-// document.querySelector('.add-btn').addEventListener('click', function (e) {
+// Storage Controller. Persist the data to local storage
+const StorageCtrl = (function() {
+  return {
+    storePlayerInfo: function(player) {
+      // Initialize a player variable where the player keys will be stored.
+      let players;
 
-//   const name = document.getElementById('name').value;
-//   const kit = document.getElementById('kit').value;
-//   const foot = document.getElementById('foot').value;
-//   const position = document.getElementById('role').value;
+      // Check if players key already already exists in the localStorage 
+      if(localStorage.getItem("players") === null) {
+        /* 
+          # If not, then asign an empty array to the player variable and then push the 'player' parameter into the array. # Then set the new keys to localStorage after converting the array to a string.
+        */
+        players = [];
+        players.push(player);
 
-//   console.log(name, kit, foot, position);
+        localStorage.setItem("players", JSON.stringify(players));
+      } else {
+        /* 
+          # If yes, then at first get the keys from localStorage then push 'player' parameter into the players[]. 
+          # Then set the new keys to localStorage after converting the array to a string.
+        */
+        players = JSON.parse(localStorage.getItem("players"));
 
-//   e.preventDefault();
-// })
+        players.push(player);
+
+        localStorage.setItem("players", JSON.stringify(players));
+      }
+    },
+    getPlayerInfoFromStorage: function() {
+      // Initialize a player variable where the player keys will be stored.
+      let players;
+
+      // Check if players key already already exists in the localStorage 
+      if(localStorage.getItem("players") === null) {
+      // If not, then asign an empty array to the player variable and then push the 'player' parameter into the array.
+        players = [];
+      } else {
+        // If yes, then at first get the keys from localStorage then push 'player' parameter into the players[]. Then set
+        players = JSON.parse(localStorage.getItem("players"));
+      }
+
+      // Return players[]
+      return players;
+    },
+    updatePlayerInfoInStorage: function(updatedPlayerInfo) {
+      // Get the players[] keys from localStorage
+      let players = JSON.parse(localStorage.getItem("players"));
+
+      /*  
+          # Loop through all the player object in the players[].
+          # Check if the updatedPlayerInfo.id matches any of the id in the players[].
+          # If matched, replace the data for that player with 'updatedPlayerInfo'.
+      */
+      players.forEach(function(player, index){
+        if(updatedPlayerInfo.id === player.id) {
+          players.splice(index, 1, updatedPlayerInfo);
+        };
+      });
+
+      // Save the updated data in localStorage after conveting players[] it to a string.
+      localStorage.setItem("players", JSON.stringify(players));
+    },
+    deletePlayerFromStorage: function(id) {
+      // Get players[] from local
+      let players = JSON.parse(localStorage.getItem("players"));
+
+      /* 
+        # Loop through all the layer object in the players[].
+        # Chack if 'id' matches any of id of the player object.
+        # When the id matches delete that player object from players[].
+      */
+      players.forEach(function(player, index){
+        if(id === player.id) {
+          players.splice(index, 1);
+        }
+      });
+
+      // Save the updated data in localStorage after conveting players[] it to a string.
+      localStorage.setItem("players", JSON.stringify(players));
+    },
+    clearAllPlayersFromStorage: function() {
+      // Clear local stroage.
+      localStorage.removeItem("players");
+    }
+  };
+})();
 
 // Player Controller function. Add/Update/Delete Player and player info thorugh this function.
 const PlayerCtrl = (function () {
@@ -22,29 +97,7 @@ const PlayerCtrl = (function () {
   }
 
   data = {
-    players: [
-      /* {
-        id: 0,
-        name: "Tahmid Sharif",
-        kit: 4,
-        foot: "Left",
-        role: "Defender"
-      },
-      {
-        id: 1,
-        name: "Tahmid Sultan",
-        kit: 8,
-        foot: "Right",
-        role: "Forward"
-      },
-      {
-        id: 2,
-        name: "Zunayed Hafeez",
-        kit: 7,
-        foot: "Right",
-        role: "Forward"
-      } */
-    ],
+    players: StorageCtrl.getPlayerInfoFromStorage(),
     currentPlayer: null,
     totalPlayers: 0
   }
@@ -315,7 +368,7 @@ const App = (function (PlayerCtrl, UICtrl) {
     document.querySelector(UISelectors.addBtn).addEventListener('click', submitAddedPlayerInfo);
 
     // Change the State to edit state when the pencil icon is clicked
-    document.querySelector(UISelectors.playerList).addEventListener('click', playerEditClick);
+    document.querySelector(UISelectors.playerList).addEventListener('click', playerEditState);
 
     // Submit the updated info when updateBtn is clicked
     document.querySelector(UISelectors.updateBtn).addEventListener('click', submitUpdatedPlayerInfo);
@@ -349,6 +402,8 @@ const App = (function (PlayerCtrl, UICtrl) {
       // Take the value from the newPlayer of PlayerCtrl function and insert it to the UICtrl and display it to the UI.
       UICtrl.addPlayerToList(newPlayer);
 
+      StorageCtrl.storePlayerInfo(newPlayer);
+
       // Get total Players
       updateTotalPlayerCount();
 
@@ -360,7 +415,7 @@ const App = (function (PlayerCtrl, UICtrl) {
     e.preventDefault();
   };
 
-  const playerEditClick = function(e) {
+  const playerEditState = function(e) {
 
     if(e.target.classList.contains("edit-player")) {
       // Get the id from the list-item
@@ -399,6 +454,9 @@ const App = (function (PlayerCtrl, UICtrl) {
       // Insert it to the UI
       UICtrl.updatePlayerList(updatedPlayerInfo);
 
+      // Update in the localStorage
+      StorageCtrl.updatePlayerInfoInStorage(updatedPlayerInfo);
+
       // Go back to initial state
       UICtrl.showInitialState();
     }
@@ -419,6 +477,9 @@ const App = (function (PlayerCtrl, UICtrl) {
     // Show Initial State
     UICtrl.showInitialState();
 
+    // Delete player in storage
+    StorageCtrl.deletePlayerFromStorage(currenPlayer.id);
+
     // Update Total Player Count
     updateTotalPlayerCount();
 
@@ -434,6 +495,9 @@ const App = (function (PlayerCtrl, UICtrl) {
 
     // Update Total count
     updateTotalPlayerCount();
+
+    // Clear all players form local Storage
+    StorageCtrl.clearAllPlayersFromStorage();
 
     e.preventDefault();
   }
