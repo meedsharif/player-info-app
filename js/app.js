@@ -8,7 +8,8 @@ const StorageCtrl = (function() {
       // Check if players key already already exists in the localStorage 
       if(localStorage.getItem("players") === null) {
         /* 
-          # If not, then asign an empty array to the player variable and then push the 'player' parameter into the array. # Then set the new keys to localStorage after converting the array to a string.
+          # If not, then asign an empty array to the player variable and then push the 'player' parameter into the array.
+          # Then set the new keys to localStorage after converting the array to a string.
         */
         players = [];
         players.push(player);

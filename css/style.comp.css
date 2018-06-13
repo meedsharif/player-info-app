@@ -25,6 +25,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   font-family: 'Dosis', sans-serif;
@@ -53,14 +56,15 @@ select {
 .container {
   max-width: 114rem;
   margin: 0 auto; }
-  @media only screen and (max-width: 56.25em) {
-    .container {
-      max-width: 50rem;
-      padding: 0 3rem; } }
   @media only screen and (max-width: 75em) {
     .container {
       max-width: 100rem;
       padding: 0 3rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .container {
+      max-width: 50rem;
+      width: 95%;
+      padding: 0 0rem; } }
 
 .heading-primary {
   font-size: 3rem;
@@ -110,6 +114,9 @@ select {
   font-weight: 200;
   display: inline;
   cursor: pointer; }
+  @media only screen and (max-width: 56.25em) {
+    .btn {
+      display: block; } }
   .btn-primary {
     background-color: #3498db; }
     .btn-primary:hover {
@@ -161,15 +168,41 @@ select {
 
 .form-input {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem; }
+  justify-content: space-between; }
+  @media only screen and (max-width: 75em) {
+    .form-input {
+      flex-direction: column;
+      margin-bottom: 2rem;
+      justify-content: center; } }
 
 .form-button {
+  display: flex; }
+  @media only screen and (max-width: 56.25em) {
+    .form-button {
+      flex-direction: column; }
+      .form-button > button {
+        margin-bottom: 2rem; } }
+
+.input-dropdown {
   display: flex;
-  /* justify-content: start; */ }
+  justify-content: space-between; }
+  .input-dropdown > .input-group {
+    width: 45%; }
+
+.form-button > button {
+  margin-bottom: 0;
+  margin-top: 2rem; }
+  @media only screen and (max-width: 56.25em) {
+    .form-button > button {
+      margin-right: 0;
+      margin-bottom: 2rem;
+      margin-top: 0; } }
 
 .form-button > button:not(:last-child) {
   margin-right: 1rem; }
+  @media only screen and (max-width: 56.25em) {
+    .form-button > button:not(:last-child) {
+      margin-right: 0; } }
 
 .input-group {
   display: flex;
@@ -188,6 +221,9 @@ select {
 .input-group > label {
   font-size: 2rem;
   margin-bottom: 1rem; }
+
+.player-list {
+  width: 100%; }
 
 ul > li.list-item {
   padding: 1rem;

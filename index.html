@@ -9,7 +9,6 @@
   <!-- <link rel="stylesheet" href="css/style.css"> -->
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="fontawsome/css/font-awesome.css">
-  <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
   <title>JavaScript Player Info App</title>
 </head>
 
@@ -31,21 +30,23 @@
           <label for="kit">kit no#</label>
           <input type="number" id="kit">
         </div>
-        <div class="input-group">
-          <label for="foot">Preferred Foot</label>
-          <select name="foot" id="foot">
-            <option value="Left">Left</option>
-            <option value="Right">Right</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="role">Role</label>
-          <select name="role" id="role">
-            <option value="GoalKeeper">GK</option>
-            <option value="Defender">Defender</option>
-            <option value="Midfield">Midfield</option>
-            <option value="Forward">Forward</option>
-          </select>
+        <div class="input-dropdown">
+          <div class="input-group">
+            <label for="foot">Pref. Foot</label>
+            <select name="foot" id="foot">
+              <option value="Left">Left</option>
+              <option value="Right">Right</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="role">Role</label>
+            <select name="role" id="role">
+              <option value="GoalKeeper">GK</option>
+              <option value="Defender">Defender</option>
+              <option value="Midfield">Midfield</option>
+              <option value="Forward">Forward</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="form-button">
@@ -61,7 +62,7 @@
     <h1 class="heading-primary margin-b-md">Total Players:
       <span class="total-players">0</span>
     </h1>
-    <ul class="card" id="player-list">
+    <ul class="card player-list" id="player-list">
       <!-- <li class="list-item" id="player-0">player-name # :
         <small>
           <i>Left footed</i>

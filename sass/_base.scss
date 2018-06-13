@@ -9,6 +9,10 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; // Default 100% = 16px, 62.5% = 10px = 1rem.
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
 }
 
 body {
@@ -41,12 +45,13 @@ select {
 .container {
   max-width: $max-width;
   margin: 0 auto;
-  @include respond(tab-port) {
-    max-width: 50rem;
-    padding: 0 3rem;
-  }
   @include respond(tab-land) {
     max-width: 100rem;
     padding: 0 3rem;
+  }
+  @include respond(tab-port) {
+    max-width: 50rem;
+    width: 95%;
+    padding: 0 0rem;
   }
 }

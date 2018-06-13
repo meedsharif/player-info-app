@@ -10,6 +10,11 @@
   font-weight: 200;
   display: inline;
   cursor: pointer;
+
+  @include respond(tab-port) {
+    display: block;
+    // width: 100%;
+  }
   // Color
   &-primary {
     background-color: $color-primary;

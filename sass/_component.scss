@@ -29,25 +29,59 @@
 .form-input {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+
+  @include respond(tab-land) {
+    flex-direction: column;
+    margin-bottom: 2rem;
+    justify-content: center;
+  }
 }
 
 .form-button {
   display: flex;
-  /* justify-content: start; */
+
+  @include respond(tab-port) {
+    flex-direction: column;
+
+    & > button {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.input-dropdown {
+  display: flex;
+  justify-content: space-between;
+
+  & > .input-group {
+    width: 45%;
+  }
+}
+
+.form-button>button {
+  margin-bottom: 0;
+  margin-top: 2rem;
+
+  @include respond(tab-port) {
+    margin-right: 0;
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
 }
 
 .form-button>button:not(:last-child) {
   margin-right: 1rem;
+
+  @include respond(tab-port) {
+    margin-right: 0;
+  }
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  // min-width: 15%;
 
   &--name {
-    // max-width: 50rem;
     min-width: 50%;  
   }
 }
@@ -67,6 +101,10 @@
 .input-group>label {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.player-list {
+  width: 100%;
 }
 
 ul>li.list-item {
